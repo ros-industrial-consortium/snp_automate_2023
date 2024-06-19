@@ -28,6 +28,7 @@ services:
       - /etc/group:/etc/group:ro
       - /etc/shadow:/etc/shadow:ro
       - /dev:/dev
+      - /usr/share/icons:/usr/share/icons
     # deploy:
     #   resources:
     #     reservations:
