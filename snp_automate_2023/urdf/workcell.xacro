@@ -187,9 +187,9 @@
 
   <link name="camera_color_optical_frame"/>
   <joint name="tool0_to_camera" type="fixed">
-    <parent link="tool0"/>
+    <parent link="tool_flange"/>
     <child link="camera_color_optical_frame"/>
-    <origin xyz="${camera_cal['camera_mount_to_camera_pos']['x']} ${camera_cal['camera_mount_to_camera_pos']['y']} ${camera_cal['camera_mount_to_camera_pos']['z']}"
+    <origin xyz="${camera_cal['camera_mount_to_camera_pos']['x']} ${camera_cal['camera_mount_to_camera_pos']['y']} ${camera_cal['camera_mount_to_camera_pos']['z'] + dt_flange_width}"
             rpy="${camera_cal['camera_mount_to_camera_rpy']['x']} ${camera_cal['camera_mount_to_camera_rpy']['y']} ${camera_cal['camera_mount_to_camera_rpy']['z']}" />
   </joint>
 
