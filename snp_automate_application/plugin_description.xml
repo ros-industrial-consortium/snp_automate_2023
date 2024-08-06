@@ -1,7 +1,0 @@
-<library path="snp_automate_application_panel">
-  <class name="snp_automate_application/AutomateApplication" type="snp_automate_application::AutomatePanel" base_class_type="rviz_common::Panel">
-    <description>
-      Scan N Plan application panel for Automate
-    </description>
-  </class>
-</library>

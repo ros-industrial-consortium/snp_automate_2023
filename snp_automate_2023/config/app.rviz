@@ -22,8 +22,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
-  - Class: snp_automate_application/AutomateApplication
-    Name: AutomateApplication
+  - Class: snp/SNPApplication
+    Name: SNPApplication
   - Class: rviz_common/Displays
     Help Height: 70
     Name: Displays
@@ -565,7 +565,7 @@ Visualization Manager:
       Yaw: 1.3503996133804321
     Saved: ~
 Window Geometry:
-  AutomateApplication:
+  SNPApplication:
     collapsed: false
   Displays:
     collapsed: false

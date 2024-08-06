@@ -30,10 +30,12 @@
   </include>
 
   <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share snp_automate_2023)/config/app.rviz" output="screen">
-    <param name="bt_files" value="[$(find-pkg-share snp_automate_application)/config/snp_automate.xml]"/>
+    <param name="bt_files" value="[$(find-pkg-share snp_automate_2023)/config/snp_automate.xml]"/>
+    <param name="bt_plugin_libs" value="[$(find-pkg-prefix snp_application)/lib/libsnp_application_bt_plugins.so]"/>
+    <param name="bt_ros_plugin_libs" value="[$(find-pkg-prefix snp_application)/lib/libsnp_application_bt_plugins.so, $(find-pkg-prefix motoros2_behavior_tree)/lib/libmotoros2_behavior_tree.so]"/>
     <param name="tree" value="main"/>
+
     <!-- Application -->
-    <param name="bt_short_timeout" value="15"/>
     <param name="config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
     <param name="mesh_file" value="/tmp/results_mesh.ply"/>
     <param name="motion_group" value="manipulator"/>
@@ -114,7 +116,7 @@
     </node>
   </group>
   <group if="$(var sim_robot)">
-    <node pkg="snp_automate_application" exec="motoros2_simulator.py"/>
+    <node pkg="motoros2_behavior_tree" exec="motoros2_simulator.py"/>
     <group if="$(var bypass_execution)">
       <node pkg="snp_motion_execution" exec="execution_simulator" >
         <param name="follow_joint_trajectory_action" value="$(var follow_joint_trajectory_action)"/>
