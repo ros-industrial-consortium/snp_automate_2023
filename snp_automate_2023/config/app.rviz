@@ -6,8 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TesseractWorkbench1/Environment Properties1
+        - /TesseractWorkbench1/Joint Trajectory Properties1
       Splitter Ratio: 0.5
-    Tree Height: 857
+    Tree Height: 1153
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -30,7 +32,7 @@ Panels:
     Property Tree Widget:
       Expanded: ~
       Splitter Ratio: 0.5
-    Tree Height: 371
+    Tree Height: 373
 Visualization Manager:
   Class: ""
   Displays:
@@ -63,98 +65,20 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /robot_description
-      Enabled: true
+      Enabled: false
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cal_target_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_color_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ee:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        floor:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_1_s:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_2_l:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_3_u:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_4_r:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5_b:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6_t:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sand_tcp:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        table:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        tool_flange:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
       Name: RobotModel
       TF Prefix: ""
       Update Interval: 0
-      Value: true
+      Value: false
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: true
@@ -250,11 +174,11 @@ Visualization Manager:
                         link_5_b:
                           link_6_t:
                             tool0:
-                              camera_color_optical_frame:
-                                {}
                               ee:
                                 {}
                               tool_flange:
+                                camera_color_optical_frame:
+                                  {}
                                 sand_tcp:
                                   {}
           preview/world:
@@ -272,11 +196,11 @@ Visualization Manager:
                           preview/link_5_b:
                             preview/link_6_t:
                               preview/tool0:
-                                preview/camera_color_optical_frame:
-                                  {}
                                 preview/ee:
                                   {}
                                 preview/tool_flange:
+                                  preview/camera_color_optical_frame:
+                                    {}
                                   preview/sand_tcp:
                                     {}
       Update Interval: 0
@@ -353,7 +277,7 @@ Visualization Manager:
       Enabled: true
       Name: Open3d Mesh
       Namespaces:
-        {}
+        "": true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -492,6 +416,25 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /camera/camera/color/image_raw
       Value: false
+    - Class: tesseract_rviz/TesseractWorkbench
+      Enabled: true
+      Environment Properties:
+        Display Mode: Monitor
+        Joint State Topic: /joint_states
+        Monitor Topic: /snp_environment/tesseract_published_environment
+        Snapshot Topic: /tesseract_environment_snapshot
+        URDF Parameter: robot_description
+        Value: ""
+      Joint Trajectory Properties:
+        Legacy Joint Trajectory:
+          Value: true
+          topic: /joint_trajectory
+        Tesseract Joint Trajectory:
+          Joint Trajectory Topic: /tesseract/display_tesseract_trajectory
+          Value: true
+        Value: ""
+      Name: TesseractWorkbench
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -536,7 +479,10 @@ Visualization Manager:
       Lasso mode: true
       Line Color: 0; 0; 0
       Point Color: 255; 255; 255
+      Point Generation Gap: 0.0020000000949949026
       Point Size: 5
+      Show Text: true
+      Text Size: 0.014999999664723873
   Transformation:
     Current:
       Class: rviz_default_plugins/TF
@@ -544,43 +490,45 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.6379969120025635
+      Distance: 3.686171531677246
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0724094957113266
-        Y: -0.02991703897714615
-        Z: 1.1151771545410156
+        X: 0.005803726613521576
+        Y: -0.19066669046878815
+        Z: 0.9173133969306946
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.44539833068847656
+      Pitch: 0.41539841890335083
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.3503996133804321
+      Yaw: 1.1753958463668823
     Saved: ~
 Window Geometry:
   AutomateApplication:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1115
+  Height: 1403
   Hide Left Dock: false
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000024000000401fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003d00000401000002300100001cfa000000000100000005fb00000026004100750074006f006d006100740065004100700070006c00690063006100740069006f006e0100000000ffffffff0000021000fffffffb0000001c0053004e0050004100700070006c00690063006100740069006f006e0100000000ffffffff0000000000000000fb000000280054006500730073006500720061006300740045006e007600690072006f006e006d0065006e00740000000000ffffffff0000000000000000fb000000240054006500730073006500720061006300740057006f0072006b00620065006e006300680000000000ffffffff0000000000000000fb000000100044006900730070006c0061007900730100000000000001710000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb000000280054006500730073006500720061006300740045006e007600690072006f006e006d0065006e0074000000028f0000014c0000000000000000fb000000100044006900730070006c0061007900730000000276000000f3000000c900fffffffb0000000a0049006d006100670065000000032c000001120000002800ffffff000000010000010f000003b9fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073800000041fc0100000004fb00000038005400650073007300650072006100630074005400720061006a006500630074006f007200790020002d00200053006c00690064006500720100000000000007380000000000000000fb000000120020002d00200053006c00690064006500720100000000000007380000000000000000fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d006501000000000000045000000000000000000000053a0000040100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000024000000525fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003b00000525000003220100001afa000000010100000006fb000000240054006500730073006500720061006300740057006f0072006b00620065006e006300680100000000ffffffff0000022200fffffffb00000026004100750074006f006d006100740065004100700070006c00690063006100740069006f006e0100000000ffffffff0000020100fffffffb0000001c0053004e0050004100700070006c00690063006100740069006f006e0100000000ffffffff0000000000000000fb000000280054006500730073006500720061006300740045006e007600690072006f006e006d0065006e00740000000000ffffffff0000000000000000fb000000240054006500730073006500720061006300740057006f0072006b00620065006e006300680000000000ffffffff0000000000000000fb000000100044006900730070006c0061007900730100000000000001710000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb000000280054006500730073006500720061006300740045006e007600690072006f006e006d0065006e0074000000028f0000014c0000000000000000fb000000100044006900730070006c0061007900730000000276000000f3000000c700fffffffb0000000a0049006d006100670065000000032c000001120000002800ffffff000000010000010f000003b9fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073800000041fc0100000004fb00000038005400650073007300650072006100630074005400720061006a006500630074006f007200790020002d00200053006c00690064006500720100000000000007380000000000000000fb000000120020002d00200053006c00690064006500720100000000000007380000000000000000fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000007ba0000052500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
+    collapsed: false
+  TesseractWorkbench:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1920
-  X: 0
+  Width: 2560
+  X: 2560
   Y: 0
