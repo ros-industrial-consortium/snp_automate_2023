@@ -70,9 +70,9 @@
   <!-- Launch Open3d Interface Node -->
   <group unless="$(var sim_vision)">
     <node pkg="industrial_reconstruction" exec="industrial_reconstruction">
-      <param name="depth_image_topic" value="/camera/aligned_depth_to_color/image_raw"/>
-      <param name="color_image_topic" value="/camera/color/image_raw"/>
-      <param name="camera_info_topic" value="/camera/aligned_depth_to_color/camera_info"/>
+      <param name="depth_image_topic" value="/camera/camera/aligned_depth_to_color/image_raw"/>
+      <param name="color_image_topic" value="/camera/camera/color/image_raw"/>
+      <param name="camera_info_topic" value="/camera/camera/aligned_depth_to_color/camera_info"/>
       <param name="cache_count" value="1"/>
       <param name="slop" value="0.05"/>
     </node>
