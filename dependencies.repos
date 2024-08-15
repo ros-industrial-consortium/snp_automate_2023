@@ -14,3 +14,7 @@
     local-name: motoros2_fjt_pt_queue_proxy
     uri: https://github.com/gavanderhoorn/motoros2_fjt_pt_queue_proxy.git
     version: 9279969b6eec46b82fd4867ebeabfe534d653b6f
+- git:
+    local-name: motoros2_behavior_tree
+    uri: https://github.com/marip8/motoros2_behavior_tree.git
+    version: 0.1.0
