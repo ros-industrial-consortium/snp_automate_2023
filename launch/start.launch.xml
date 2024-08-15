@@ -39,6 +39,7 @@
     <param name="config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
     <param name="mesh_file" value="/tmp/results_mesh.ply"/>
     <param name="motion_group" value="manipulator"/>
+    <param name="freespace_motion_group" value="manipulator"/>
     <param name="reference_frame" value="$(var reference_frame)"/>
     <param name="tcp_frame" value="sand_tcp"/>
     <param name="camera_frame" value="camera_color_optical_frame"/>
