@@ -49,6 +49,7 @@
     <!-- Home -->
     <param name="home_state_joint_values" value="[0.0, 0.0, 1.57, 0.0, 0.0, 0.785]"/>
     <param name="home_state_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
+    <param name="controller_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
     <param name="freespace_tree" value="go_home_main"/>
     <!-- Industrial Reconstruction parameters -->
     <param name="ir.tsdf.min.x" value="0.21"/>
@@ -113,7 +114,7 @@
     <node pkg="motoros2_fjt_pt_queue_proxy" exec="server" name="fjt_proxy">
       <param name="max_retries" value="200"/>
       <param name="busy_wait_time" value ="0.1"/>
-      <param name="convergence_threshold" value="0.01"/>
+      <param name="convergence_threshold" value="0.03"/>
     </node>
   </group>
   <group if="$(var sim_robot)">
