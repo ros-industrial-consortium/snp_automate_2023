@@ -7,9 +7,11 @@ ENV DEBIAN_FRONTEND noninteractivej
 
 USER root
 
-
 # Run apt update and install useful utilities like sudo
 RUN apt update -y -qq && apt install -y -qq sudo
+
+# Install pyquaternion
+RUN python3 -m pip install pyquaternion
 
 # Bind mount the source directory so as not to unnecessarily copy source code into the docker image
 ARG WORKSPACE_DIR=/opt/snp_automate_2023
