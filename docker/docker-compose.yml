@@ -27,6 +27,7 @@ services:
       - /etc/group:/etc/group:ro
       - /etc/shadow:/etc/shadow:ro
       - /dev:/dev
+      - $HOME/snp/meshes:/tmp/meshes
       - ../launch:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/launch:ro
       - ../config:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/config:ro
       - ../calibration:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/calibration:ro
