@@ -54,7 +54,7 @@
     <!-- Industrial Reconstruction parameters -->
     <param name="ir.tsdf.min.x" value="0.21"/>
     <param name="ir.tsdf.min.y" value="-0.45"/>
-    <param name="ir.tsdf.min.z" value="0.0889"/>
+    <param name="ir.tsdf.min.z" value="0.05"/>
     <param name="ir.tsdf.max.x" value="1.5"/>
     <param name="ir.tsdf.max.y" value="0.45"/>
     <param name="ir.tsdf.max.z" value="0.527"/>
