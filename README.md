@@ -49,3 +49,10 @@ docker compose up
     source install/setup.bash
     ros2 launch snp_automate_2023 start.launch.xml sim_robot:=<true|false> sim_vision:=<true|false>
     ```
+
+## Hardware Configuration
+### MotoROS2
+
+Install MotoROS2 on the robot controller, following the [instructions on the MotoROS2 repository](https://github.com/Yaskawa-Global/motoros2?tab=readme-ov-file#installation).
+
+> Be sure to install the same version of MotoROS2 as the version of the `motoros2_interfaces` package defined in the [`dependencies.repos` file](dependencies.repos#L8).
