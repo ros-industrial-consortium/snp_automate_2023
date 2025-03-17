@@ -5,11 +5,11 @@
 - git:
     local-name: motoros2_interfaces
     uri: https://github.com/yaskawa-global/motoros2_interfaces.git
-    version: main
+    version: 0.1.3
 - git:
     local-name: industrial_core_ros2_msgs_only
     uri: https://github.com/ros-industrial/industrial_core.git
-    version: ros2_msgs_only
+    version: d547cdcfdaf3bc0d46325215b8219b0a190c8e6c
 - git:
     local-name: motoros2_fjt_pt_queue_proxy
     uri: https://github.com/gavanderhoorn/motoros2_fjt_pt_queue_proxy.git
