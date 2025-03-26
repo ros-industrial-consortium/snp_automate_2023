@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="motoman_hc10" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="motoman_hc10" xmlns:xacro="http://ros.org/wiki/xacro" xmlns:tesseract="https://github.com/tesseract-robotics/tesseract" tesseract:make_convex="true">
   <xacro:include filename="$(find motoman_hc10_support)/urdf/hc10dt_macro.xacro" />
   <xacro:motoman_hc10dt prefix=""/>
 
