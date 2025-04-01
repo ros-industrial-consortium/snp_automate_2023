@@ -37,7 +37,7 @@
 
     <!-- Application -->
     <param name="config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
-    <param name="mesh_file" value="/tmp/meshes/results_mesh.ply"/>
+    <param name="mesh_file" value="/$(env HOME)/snp/meshes/results_mesh.ply"/>
     <param name="motion_group" value="manipulator"/>
     <param name="freespace_motion_group" value="manipulator"/>
     <param name="reference_frame" value="$(var reference_frame)"/>
