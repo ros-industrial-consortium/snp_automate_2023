@@ -105,7 +105,7 @@
     <arg name="scan_disabled_contact_links" value="$(var scan_disabled_contact_links)"/>
     <arg name="scan_reduced_contact_links" value="$(var scan_reduced_contact_links)"/>
     <arg name="collision_object_type" value="convex_decomposition"/>
-    <arg name="max_convex_hulls" value="6"/>
+    <arg name="max_convex_hulls" value="12"/>
   </include>
 
   <node pkg="snp_scanning" exec="scan_motion_plan_from_file_node">
