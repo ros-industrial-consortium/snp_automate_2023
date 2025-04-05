@@ -5,7 +5,7 @@
 - git:
     local-name: motoros2_interfaces
     uri: https://github.com/yaskawa-global/motoros2_interfaces.git
-    version: 0.1.3
+    version: 0.2.0
 - git:
     local-name: industrial_core_ros2_msgs_only
     uri: https://github.com/ros-industrial/industrial_core.git
