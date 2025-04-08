@@ -193,14 +193,18 @@
 
   <!-- Add TCP -->
   <link name="sand_tcp">
-    <visual>
-      <geometry>
-        <mesh filename="package://snp_automate_2023/meshes/collision/sponge.ply"/>
-      </geometry>
-    </visual>
+<!--    <visual>-->
+<!--      <origin xyz="0 0 -0.0325" />-->
+<!--      <geometry>-->
+<!--        <cylinder radius="0.030" length="0.025"/>-->
+<!--        <mesh filename="package://snp_automate_2023/meshes/collision/sponge.ply"/>-->
+<!--      </geometry>-->
+<!--    </visual>-->
     <collision>
+      <origin xyz="0 0 -0.0325" />
       <geometry>
-        <mesh filename="package://snp_automate_2023/meshes/collision/sponge.ply"/>
+        <cylinder radius="0.030" length="0.025"/>
+<!--        <mesh filename="package://snp_automate_2023/meshes/collision/sponge.ply"/>-->
       </geometry>
     </collision>
   </link>
@@ -208,7 +212,7 @@
   <joint name="sand_tcp_joint" type="fixed">
     <parent link="tool_flange"/>
 <!--    <origin xyz="-0.158 -0.158 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>-->
-    <origin xyz="-0.149 ${-0.149 - 0.005} 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>
+    <origin xyz="-0.149 ${-0.149 - 0.020} 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>
 <!--    <parent link="ee"/>-->
 <!--    <origin xyz="${-0.186 - 0.038} 0.0 ${0.08325}" rpy="0.0 ${radians(90)} 0.0"/>-->
     <child link="sand_tcp"/>
