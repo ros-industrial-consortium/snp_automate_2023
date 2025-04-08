@@ -256,6 +256,8 @@
                                    trajectory="{process}"/>
       <StopReconstructionService name="Stop Reconstruction"
                                  service_name="stop_reconstruction"/>
+      <EmptyService service_name="remove_scan_link"/>
+      <AddScanLinkService service_name="add_scan_link"/>
       <FollowJointTrajectoryAction name="Execute Scan Departure Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{departure}"/>
@@ -264,6 +266,11 @@
 
   <!-- Description of Node Models (used by Groot) -->
   <TreeNodesModel>
+    <Action ID="AddScanLinkService"
+            editable="true">
+      <input_port name="service_name"
+                  default="add_scan_link"/>
+    </Action>
     <Action ID="ButtonApproval"
             editable="true">
       <input_port name="approve_button"/>
@@ -278,6 +285,10 @@
       <input_port name="first"/>
       <input_port name="second"/>
       <output_port name="output"/>
+    </Action>
+    <Action ID="EmptyService"
+            editable="true">
+      <input_port name="service_name"/>
     </Action>
     <Action ID="FollowJointTrajectoryAction"
             editable="true">
