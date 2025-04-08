@@ -12,10 +12,8 @@ mesh_modifiers:
 tool_path_planner:
   name: PlaneSlicerRasterPlanner
   direction_generator:
-    name: FixedDirectionGenerator
-    x: 1
-    y: 0
-    z: 0
+    name: PrincipalAxisDirectionGenerator
+    rotation_offset: 90
   origin_generator:
     name: FixedOriginGenerator
     x: 0
