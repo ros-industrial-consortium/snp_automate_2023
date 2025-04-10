@@ -107,7 +107,7 @@
 <!--    <arg name="collision_object_type" value="octree"/>-->
 <!--    <arg name="octree_resolution" value="0.01"/>-->
     <arg name="collision_object_type" value="convex_decomposition"/>
-    <arg name="max_convex_hulls" value="12"/>
+<!--    <arg name="max_convex_hulls" value="12"/>-->
   </include>
 
   <node pkg="snp_scanning" exec="scan_motion_plan_from_file_node">
