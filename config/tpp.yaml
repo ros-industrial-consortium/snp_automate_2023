@@ -19,11 +19,11 @@ tool_path_planner:
     x: 0
     y: 0
     z: 0
-  line_spacing: 0.03
-  point_spacing: 0.03
+  line_spacing: 0.025
+  point_spacing: 0.025
   min_hole_size: 0.1
   search_radius: 0.03
-  min_segment_size: 0.05
+  min_segment_size: 0.2
   bidirectional: true
 tool_path_modifiers:
   - name: MovingAverageOrientationSmoothingModifier
