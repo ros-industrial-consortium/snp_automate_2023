@@ -197,12 +197,14 @@
                             disapprove_button="back"
                             _description="Press next to approve the process motion plan and proceed to process motion execution"/>
           </SetPage>
-          <SubTree ID="motion"
-                   approach="{approach}"
-                   process="{process}"
-                   departure="{departure}"
-                   trajectory="{motion_plan}"
-                   _autoremap="true"/>
+          <Repeat num_cycles="10">
+            <SubTree ID="motion"
+                     approach="{approach}"
+                     process="{process}"
+                     departure="{departure}"
+                     trajectory="{motion_plan}"
+                     _autoremap="true"/>
+          </Repeat>
         </Sequence>
       </Progress>
       <SetPage index="4">
