@@ -4,6 +4,7 @@ mesh_modifiers:
     max_cluster_size: 1000000000
     cluster_tolerance: 0.1
     plane_distance_threshold: 0.1
+  - name: NormalsFromMeshFaces
 tool_path_planner:
   name: PlaneSlicerRasterPlanner
   direction_generator:
