@@ -31,6 +31,8 @@ services:
       - ../launch:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/launch:ro
       - ../config:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/config:ro
       - ../calibration:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/calibration:ro
+      - ../urdf:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/urdf:ro
+      - ../meshes:/opt/snp_automate_2023/install/snp_automate_2023/share/snp_automate_2023/meshes:ro
   # Driver
   micro-ros-agent:
     environment:
