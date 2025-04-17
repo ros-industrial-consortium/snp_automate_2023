@@ -3,8 +3,7 @@
   <arg name="sim_vision" default="True"/>
   <arg name="sim_robot" default="True"/>
   <arg name="bypass_execution" default="$(var sim_robot)" />
-<!--  <arg name="mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/part_scan.ply"/>-->
-  <arg name="mesh_file" default="$(env HOME)/snp/meshes/nss_2025/2025.04.07_17:46:00_aura.ply"/>
+  <arg name="mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/2025.04.07_17:46:00_aura.ply"/>
   <arg name="scan_trajectory_file" default="$(find-pkg-share snp_automate_2023)/config/scan_traj.yaml"/>
   <arg name="verbose" default="True"/>
   <arg name="scan_disabled_contact_links" default="[table, base_link, floor]"/>
