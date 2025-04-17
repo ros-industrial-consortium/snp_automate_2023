@@ -101,6 +101,15 @@
       <FollowJointTrajectoryAction name="Execute Approach Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{updated_approach}"/>
+      <ReverseTrajectory input="{process}"
+                         output="{reverse_process}"/>
+      <CombineTrajectories first="{process}"
+                           second="{reverse_process}"
+                           output="{combined_process}"/>
+      <Repeat num_cycles="10">
+        <FollowJointTrajectoryAction action_name="{follow_joint_trajectory_action}"
+                                     trajectory="{combined_process}"/>
+      </Repeat>
       <FollowJointTrajectoryAction name="Execute Process Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{process}"/>
@@ -197,14 +206,12 @@
                             disapprove_button="back"
                             _description="Press next to approve the process motion plan and proceed to process motion execution"/>
           </SetPage>
-          <Repeat num_cycles="10">
-            <SubTree ID="motion"
-                     approach="{approach}"
-                     process="{process}"
-                     departure="{departure}"
-                     trajectory="{motion_plan}"
-                     _autoremap="true"/>
-          </Repeat>
+          <SubTree ID="motion"
+                   approach="{approach}"
+                   process="{process}"
+                   departure="{departure}"
+                   trajectory="{motion_plan}"
+                   _autoremap="true"/>
         </Sequence>
       </Progress>
       <SetPage index="4">
@@ -352,6 +359,11 @@
       <input_port name="end"
                   default="100"/>
     </Decorator>
+    <Action ID="ReverseTrajectory"
+            editable="true">
+      <input_port name="input"/>
+      <output_port name="output"/>
+    </Action>
     <Condition ID="RosSpinner"
                editable="true"/>
     <Control ID="SNPSequenceWithMemory"
