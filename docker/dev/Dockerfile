@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 USER root
 
 # Run apt update 
-RUN apt update -y -qq
+RUN apt update -y -qq && apt install -y -qq sudo python3-pip
 
 # Install pyquaternion
 RUN python3 -m pip install pyquaternion
