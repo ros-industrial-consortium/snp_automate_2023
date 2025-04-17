@@ -14,24 +14,30 @@
     <!-- Contact manager plugins -->
     <contact_managers_plugin_config filename="package://snp_automate_2023/config/workcell_plugins.yaml"/>
 
-    <disable_collisions link1="tool0" link2="ee" reason="Adjacent"/>
-    <disable_collisions link1="link_1_s" link2="link_6_t" reason="Never"/>
-    <disable_collisions link1="link_2_l" link2="link_6_t" reason="Never"/>
-    <disable_collisions link1="base_link" link2="table" reason="Never"/>
-    <disable_collisions link1="link_5_b" link2="link_4_r" reason="Adjacent"/>
-    <disable_collisions link1="link_1_s" link2="table" reason="Never"/>
-    <disable_collisions link1="link_4_r" link2="link_1_s" reason="Never"/>
+    <disable_collisions link1="floor" link2="table" reason="Never"/>
+    <disable_collisions link1="floor" link2="base_link" reason="Never"/>
+    <disable_collisions link1="floor" link2="link_1_s" reason="Never"/>
+    <disable_collisions link1="floor" link2="link_2_l" reason="Never"/>
+    <disable_collisions link1="floor" link2="link_3_u" reason="Never"/>
+    <disable_collisions link1="table" link2="base_link" reason="Never"/>
+    <disable_collisions link1="table" link2="link_1_s" reason="Never"/>
     <disable_collisions link1="base_link" link2="link_1_s" reason="Adjacent"/>
-    <disable_collisions link1="link_6_t" link2="link_3_u" reason="Never"/>
-    <disable_collisions link1="link_5_b" link2="link_6_t" reason="Adjacent"/>
-    <disable_collisions link1="link_2_l" link2="link_1_s" reason="Adjacent"/>
-    <disable_collisions link1="link_2_l" link2="table" reason="Never"/>
-    <disable_collisions link1="link_6_t" link2="ee" reason="Never"/>
-    <disable_collisions link1="link_4_r" link2="link_3_u" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_3_u" reason="Never"/>
+    <disable_collisions link1="link_1_s" link2="link_2_l" reason="Adjacent"/>
+    <disable_collisions link1="link_1_s" link2="link_3_u" reason="Never"/>
     <disable_collisions link1="link_2_l" link2="link_3_u" reason="Adjacent"/>
-    <disable_collisions link1="link_5_b" link2="link_2_l" reason="Never"/>
-    <disable_collisions link1="link_5_b" link2="link_3_u" reason="Never"/>
-    <disable_collisions link1="base_link" link2="link_2_l" reason="Never"/>
     <disable_collisions link1="link_2_l" link2="link_4_r" reason="Never"/>
+    <disable_collisions link1="link_3_u" link2="link_4_r" reason="Adjacent"/>
+    <disable_collisions link1="link_3_u" link2="link_5_b" reason="Never"/>
+    <disable_collisions link1="link_3_u" link2="link_6_t" reason="Never"/>
+    <disable_collisions link1="link_3_u" link2="ee" reason="Never"/>
+    <disable_collisions link1="link_3_u" link2="sand_tcp" reason="Never"/>
+    <disable_collisions link1="link_4_r" link2="link_5_b" reason="Adjacent"/>
     <disable_collisions link1="link_4_r" link2="link_6_t" reason="Never"/>
+    <disable_collisions link1="link_5_b" link2="link_6_t" reason="Adjacent"/>
+    <disable_collisions link1="link_5_b" link2="ee" reason="Never"/>
+    <disable_collisions link1="link_5_b" link2="sand_tcp" reason="Never"/>
+    <disable_collisions link1="link_6_t" link2="ee" reason="Always"/>
+    <disable_collisions link1="link_6_t" link2="sand_tcp" reason="Never"/>
+    <disable_collisions link1="ee" link2="sand_tcp" reason="Always"/>
 </robot>
