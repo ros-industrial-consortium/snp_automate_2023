@@ -3,7 +3,7 @@
   <arg name="sim_vision" default="True"/>
   <arg name="sim_robot" default="True"/>
   <arg name="bypass_execution" default="$(var sim_robot)" />
-  <arg name="mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/part_scan.ply"/>
+  <arg name="mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/2025.04.07_17:46:00_aura.ply"/>
   <arg name="scan_trajectory_file" default="$(find-pkg-share snp_automate_2023)/config/scan_traj.yaml"/>
   <arg name="verbose" default="True"/>
   <arg name="scan_disabled_contact_links" default="[table, base_link, floor]"/>
@@ -54,7 +54,7 @@
     <!-- Industrial Reconstruction parameters -->
     <param name="ir.tsdf.min.x" value="0.21"/>
     <param name="ir.tsdf.min.y" value="-0.45"/>
-    <param name="ir.tsdf.min.z" value="0.0889"/>
+    <param name="ir.tsdf.min.z" value="0.05"/>
     <param name="ir.tsdf.max.x" value="1.5"/>
     <param name="ir.tsdf.max.y" value="0.45"/>
     <param name="ir.tsdf.max.z" value="0.527"/>
@@ -103,7 +103,10 @@
     <arg name="verbose" value="$(var verbose)"/>
     <arg name="scan_disabled_contact_links" value="$(var scan_disabled_contact_links)"/>
     <arg name="scan_reduced_contact_links" value="$(var scan_reduced_contact_links)"/>
-
+<!--    <arg name="collision_object_type" value="octree"/>-->
+<!--    <arg name="octree_resolution" value="0.01"/>-->
+    <arg name="collision_object_type" value="convex_decomposition"/>
+<!--    <arg name="max_convex_hulls" value="12"/>-->
   </include>
 
   <node pkg="snp_scanning" exec="scan_motion_plan_from_file_node">

@@ -4,24 +4,27 @@ mesh_modifiers:
     max_cluster_size: 1000000000
     cluster_tolerance: 0.1
     plane_distance_threshold: 0.1
+  - name: PlaneProjectionModifier
+    distance_threshold: 0.005
+    max_planes: 1
+    min_vertices: 1
   - name: NormalsFromMeshFaces
 tool_path_planner:
   name: PlaneSlicerRasterPlanner
   direction_generator:
-    name: FixedDirectionGenerator
-    x: 1
-    y: 0
-    z: 0
+    name: PrincipalAxisDirectionGenerator
+    rotation_offset: 90
   origin_generator:
     name: FixedOriginGenerator
     x: 0
     y: 0
     z: 0
-  line_spacing: 0.03
-  point_spacing: 0.015
+  line_spacing: 0.025
+  point_spacing: 0.025
   min_hole_size: 0.1
   search_radius: 0.03
-  min_segment_size: 0.1
+  min_segment_size: 0.2
+  bidirectional: true
 tool_path_modifiers:
   - name: MovingAverageOrientationSmoothingModifier
     window_size: 5
