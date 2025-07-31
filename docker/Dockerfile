@@ -1,4 +1,4 @@
-ARG TAG
+ARG TAG=humble
 FROM ghcr.io/ros-industrial-consortium/scan_n_plan_workshop:${TAG}
 
 SHELL ["/bin/bash", "-c"]
@@ -32,4 +32,5 @@ RUN --mount=type=bind,target=${WORKSPACE_DIR}/src/snp_automate_2023 \
   && rm -rf build log
 
 COPY --chmod=755 docker/launch_snp_automate_2023.sh /opt/launch_snp_automate_2023.sh
+COPY --chmod=755 docker/calibration.entrypoint.sh /opt/calibration.entrypoint.sh
 ENTRYPOINT ["/opt/launch_snp_automate_2023.sh"]
