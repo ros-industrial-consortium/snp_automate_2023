@@ -1,12 +1,9 @@
 services:
   snp:
     environment:
-      DISPLAY: $DISPLAY
-      XAUTHORITY: $XAUTHORITY
       ROS_LOG_DIR: /tmp/.ros
       ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
       ROS_DOMAIN_ID: $ROS_DOMAIN_ID
-      HOME: $HOME
     container_name: snp-automate_2023
     image: ghcr.io/ros-industrial-consortium/snp_automate_2023:humble-master
     stdin_open: true
@@ -18,7 +15,6 @@ services:
     group_add:
       - sudo
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
       - /etc/hosts:/etc/hosts
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
