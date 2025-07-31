@@ -103,7 +103,6 @@
     <arg name="verbose" value="$(var verbose)"/>
     <arg name="scan_disabled_contact_links" value="$(var scan_disabled_contact_links)"/>
     <arg name="scan_reduced_contact_links" value="$(var scan_reduced_contact_links)"/>
-
   </include>
 
   <node pkg="snp_scanning" exec="scan_motion_plan_from_file_node">

@@ -29,6 +29,8 @@
   <exec_depend>motoros2_behavior_tree</exec_depend>
   <exec_depend>rqt</exec_depend>
   <exec_depend>rqt_common_plugins</exec_depend>
+  <exec_depend>rclcpp_components</exec_depend>
+  <exec_depend>image_proc</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

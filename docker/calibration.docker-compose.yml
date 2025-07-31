@@ -1,0 +1,77 @@
+services:
+  snp:
+    environment:
+      DISPLAY: $DISPLAY
+      XAUTHORITY: $XAUTHORITY
+      ROS_LOG_DIR: /tmp/.ros
+      ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+      HOME: $HOME
+    container_name: snp-automate_2023
+    image: ghcr.io/ros-industrial-consortium/snp_automate_2023:humble-master
+    stdin_open: true
+    tty: true
+    privileged: true
+    network_mode: host
+    ipc: host
+    user: ${CURRENT_UID}  # CURRENT_UID=$(id -u):$(id -g)
+    group_add:
+      - sudo
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/hosts:/etc/hosts
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - /etc/shadow:/etc/shadow:ro
+      - /dev:/dev
+    entrypoint: ./opt/calibration.entrypoint.sh
+
+  # Driver
+  micro-ros-agent:
+    environment:
+      ROS_LOG_DIR: /tmp/.ros
+      ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+    container_name: micro-ros-agent
+    image: microros/micro-ros-agent:humble
+    command: udp4 --port 8888
+    stdin_open: true
+    tty: true
+    privileged: true
+    network_mode: host
+
+  # Calibration Data Collection
+  calibration:
+    environment:
+      DISPLAY: $DISPLAY
+      XAUTHORITY: $XAUTHORITY
+      ROS_LOG_DIR: /tmp/.ros
+      ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+      IC_CAMERA_MOUNT_FRAME: tool0
+      IC_CAMERA_FRAME: camera_color_optical_frame
+      IC_TARGET_MOUNT_FRAME: base_link
+      IC_TARGET_FRAME: cal_target_frame
+      IC_SAVE_PATH: $HOME/snp/calibration
+      IC_CONFIG_FILE: $HOME/snp/calibration/config/calibration_config.yaml
+      IC_SYNC_TIME: '1.0'
+      IC_IMAGE_TOPIC: /camera/camera/color/image_rect
+      HOME: $HOME
+    container_name: industrial_calibration_ros2
+    image: ghcr.io/ros-industrial/industrial_calibration_ros2:humble-1.1
+    stdin_open: true
+    tty: true
+    privileged: false
+    network_mode: host
+    ipc: host
+    user: ${CURRENT_UID}  # CURRENT_UID=$(id -u):$(id -g)
+    group_add:
+      - sudo
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/hosts:/etc/hosts
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - /etc/shadow:/etc/shadow:ro
+      - $HOME/snp/calibration:$HOME/snp/calibration
+      - ../config/:$HOME/snp/calibration/config:ro

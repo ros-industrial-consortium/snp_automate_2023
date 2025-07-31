@@ -5,6 +5,7 @@
 #       SNP_SIM_VISION: true
 #       SNP_BYPASS_EXECUTION: true
 #       NVIDIA_DRIVER_CAPABILITIES: all
+#     entrypoint: /opt/calibration.entrypoint.sh
 #     deploy:
 #       resources:
 #         reservations:
