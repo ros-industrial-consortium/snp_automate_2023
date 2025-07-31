@@ -56,3 +56,18 @@ docker compose up
 Install MotoROS2 on the robot controller, following the [instructions on the MotoROS2 repository](https://github.com/Yaskawa-Global/motoros2?tab=readme-ov-file#installation).
 
 > Be sure to install the same version of MotoROS2 as the version of the `motoros2_interfaces` package defined in the [`dependencies.repos` file](dependencies.repos#L8).
+
+### Camera extrinsic hand-eye calibration
+
+Launch the camera extrinsic calibration application using Docker:
+
+```commandLine
+cd snp_automate_2023
+docker compose -f docker/calibration.docker-compose.yml
+```
+
+> Note: this Docker application mounts the directory `$HOME/snp/calibration` and will save the calibration data and results into this directory.
+
+Move the robot through 10-15 view poses observing a calibration target.
+Use the Rviz calibration panel to collect calibration observations and save them to file, perform the calibration, and save the calibration results to file.
+When complete, overwrite the [calibration.yaml](config/calibration.yaml) file with the new calibration results file, and then launch the nominal application.
