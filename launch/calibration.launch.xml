@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_description" default="$(command 'xacro $(find-pkg-share snp_automate_2023)/urdf/workcell.xacro')"/>
+
+  <node pkg="joint_state_publisher" exec="joint_state_publisher">
+    <param name="source_list" value="[robot_joint_states, joint_state_broadcaster/joint_states]"/>
+  </node>
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" output="screen">
+    <param name="robot_description" value="$(var robot_description)"/>
+  </node>
+
+  <!-- Realsense -->
+  <include file="$(find-pkg-share realsense2_camera)/launch/rs_launch.py">
+    <arg name="publish_tf" value="false"/>
+  </include>
+
+  <!-- Image rectification -->
+  <node_container pkg="rclcpp_components" exec="component_container" name="image_proc_container" namespace="">
+    <composable_node pkg="image_proc" plugin="image_proc::RectifyNode" name="rectify_node" namespace="/camera/camera">
+      <remap from="image" to="color/image_raw"/>
+      <remap from="image_rect" to="color/image_rect"/>
+      <remap from="camera_info" to="color/camera_info"/>
+    </composable_node>
+  </node_container>
+</launch>
