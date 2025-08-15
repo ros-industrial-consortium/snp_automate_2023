@@ -13,6 +13,8 @@
   <group if="$(var use_gui)">
     <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui" name="joint_state_publisher_gui" output="screen">
       <remap from="joint_states" to="robot_joint_states"/>
+      <param name="zeros.joint_3_u" value="1.57"/>
+      <param name="zeros.joint_6_t" value="0.785"/>
     </node>
   </group>
 
@@ -26,5 +28,4 @@
       <param name="robot_description_semantic" value="$(var robot_description_semantic)"/>
     </node>
   </group>
-
 </launch>
