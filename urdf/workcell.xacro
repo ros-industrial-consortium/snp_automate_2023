@@ -208,7 +208,7 @@
   <joint name="sand_tcp_joint" type="fixed">
     <parent link="tool_flange"/>
 <!--    <origin xyz="-0.158 -0.158 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>-->
-    <origin xyz="-0.149 ${-0.149 - 0.005} 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>
+    <origin xyz="-0.149 ${-0.149 - 0.005} 0.123" rpy="0.0 ${radians(-90)} ${radians(-135)}"/>
 <!--    <parent link="ee"/>-->
 <!--    <origin xyz="${-0.186 - 0.038} 0.0 ${0.08325}" rpy="0.0 ${radians(90)} 0.0"/>-->
     <child link="sand_tcp"/>
