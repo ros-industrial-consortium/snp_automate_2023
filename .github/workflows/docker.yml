@@ -56,7 +56,7 @@ jobs:
           context: .
           file: docker/Dockerfile
           build-args: |
-            TAG=${{ matrix.distro }}-6.0
+            TAG=${{ matrix.distro }}-7.0
           push: ${{ env.PUSH_DOCKER_IMAGE }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
