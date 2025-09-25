@@ -151,9 +151,8 @@
                             disapprove_button="back"
                             _description="Press next to create a tool path plan"/>
           </SetPage>
-          <GenerateToolPathsService name="Generate Tool Paths"
-                                    service_name="generate_tool_paths"
-                                    tool_paths="{tool_paths}"/>
+          <PlanToolPathService service_name="plan_tool_path"
+                               tool_paths="{tool_paths}"/>
           <ToolPathsPub name="Publish Tool Paths"
                         topic_name="tool_paths"
                         tool_paths="{tool_paths}"/>
@@ -322,13 +321,6 @@
       <output_port name="departure"
                    default="{scan_departure}"/>
     </Action>
-    <Action ID="GenerateToolPathsService"
-            editable="true">
-      <input_port name="service_name"
-                  default="generate_tool_paths"/>
-      <input_port name="tool_paths"
-                  default="{tool_paths}"/>
-    </Action>
     <Action ID="GetCurrentJointState"
             editable="true">
       <input_port name="topic_name"
@@ -341,6 +333,13 @@
       <input_port name="topic_name"/>
       <input_port name="trajectory"
                   default="{trajectory}"/>
+    </Action>
+    <Action ID="PlanToolPathService"
+            editable="true">
+      <input_port name="service_name"
+                  default="plan_tool_path"/>
+      <input_port name="tool_paths"
+                  default="{tool_paths}"/>
     </Action>
     <Decorator ID="Progress"
                editable="true">
