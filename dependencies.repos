@@ -17,4 +17,4 @@
 - git:
     local-name: motoros2_behavior_tree
     uri: https://github.com/marip8/motoros2_behavior_tree.git
-    version: 0.1.0
+    version: 0.2.0
