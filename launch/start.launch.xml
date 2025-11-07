@@ -30,27 +30,33 @@
   </include>
 
   <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share snp_automate_2023)/config/app.rviz" output="screen">
+    <!-- Rviz Displays -->
+    <param name="robot_description" value="$(var robot_description)"/>
+    <param name="robot_description_semantic" value="$(var robot_description_semantic)"/>
+    <!-- Application -->
+    <!-- BT -->
     <param name="bt_files" value="[$(find-pkg-share snp_automate_2023)/config/snp_automate.xml]"/>
     <param name="bt_plugin_libs" value="[$(find-pkg-prefix snp_application)/lib/libsnp_application_bt_plugins.so]"/>
     <param name="bt_ros_plugin_libs" value="[$(find-pkg-prefix snp_application)/lib/libsnp_application_bt_plugins.so, $(find-pkg-prefix motoros2_behavior_tree)/lib/libmotoros2_behavior_tree.so]"/>
     <param name="tree" value="main"/>
-
-    <!-- Application -->
-    <param name="tpp_config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
-    <param name="mesh_file" value="/$(env HOME)/snp/meshes/results_mesh.ply"/>
-    <param name="motion_group" value="manipulator"/>
+    <param name="freespace_tree" value="go_home_main"/>
+    <!-- General -->
+    <param name="follow_joint_trajectory_action" value="$(var follow_joint_trajectory_action)"/>
     <param name="freespace_motion_group" value="manipulator"/>
+    <param name="controller_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
+    <!-- Home -->
+    <param name="home_state_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
+    <param name="home_state_joint_positions" value="[0.0, 0.0, 1.57, 0.0, 0.0, 0.785]"/>
+    <!-- Frames -->
     <param name="reference_frame" value="$(var reference_frame)"/>
     <param name="tcp_frame" value="sand_tcp"/>
     <param name="camera_frame" value="camera_color_optical_frame"/>
-    <param name="robot_description" value="$(var robot_description)"/>
-    <param name="robot_description_semantic" value="$(var robot_description_semantic)"/>
-    <param name="follow_joint_trajectory_action" value="$(var follow_joint_trajectory_action)"/>
-    <!-- Home -->
-    <param name="home_state_joint_values" value="[0.0, 0.0, 1.57, 0.0, 0.0, 0.785]"/>
-    <param name="home_state_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
-    <param name="controller_joint_names" value="['joint_1_s', 'joint_2_l', 'joint_3_u', 'joint_4_r', 'joint_5_b', 'joint_6_t']"/>
-    <param name="freespace_tree" value="go_home_main"/>
+    <!-- Scan -->
+    <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
+    <!-- Process -->
+    <param name="process_motion_group" value="manipulator"/>
+    <param name="process_tpp_config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
+    <param name="process_mesh_file" value="/$(env HOME)/snp/meshes/results_mesh.ply"/>
     <!-- Industrial Reconstruction parameters -->
     <param name="ir.tsdf.min.x" value="0.21"/>
     <param name="ir.tsdf.min.y" value="-0.45"/>
@@ -107,10 +113,6 @@
     <arg name="scan_disabled_contact_links" value="$(var scan_disabled_contact_links)"/>
     <arg name="scan_reduced_contact_links" value="$(var scan_reduced_contact_links)"/>
   </include>
-
-  <node pkg="snp_scanning" exec="scan_motion_plan_from_file_node">
-    <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
-  </node>
 
   <group unless="$(var sim_robot)">
     <node pkg="motoros2_fjt_pt_queue_proxy" exec="server" name="fjt_proxy">
