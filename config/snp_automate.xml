@@ -34,8 +34,11 @@
       <Progress start="0"
                 end="50">
         <Sequence>
-          <GetCurrentJointState topic_name="/joint_states"
-                                current_state="{current_state}"/>
+          <RetryUntilSuccessful num_attempts="3">
+            <GetCurrentJointState name="Get Current Joint State"
+                                  topic_name="/joint_states"
+                                  current_state="{current_state}"/>
+          </RetryUntilSuccessful>
           <GenerateFreespaceMotionPlanService service_name="generate_freespace_motion_plan"
                                               start_joint_state="{current_state}"
                                               goal_joint_state="{home_state}"
@@ -90,14 +93,17 @@
 
   <BehaviorTree ID="motion">
     <Sequence>
-      <StartPointQueueMode name="Enable Robot"
-                           service_name="start_point_queue_mode"/>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{approach}"
                                   output="{updated_approach}"/>
+      <StartPointQueueMode name="Enable Robot"
+                           service_name="start_point_queue_mode"/>
       <FollowJointTrajectoryAction name="Execute Approach Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{updated_approach}"/>
@@ -229,8 +235,11 @@
 
   <BehaviorTree ID="scan">
     <Sequence>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{approach}"
