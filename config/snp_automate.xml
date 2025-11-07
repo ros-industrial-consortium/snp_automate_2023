@@ -115,9 +115,27 @@
                             disapprove_button="back"
                             _description="Press next to generate a motion plan for part scanning"/>
           </SetPage>
-          <LoadTrajectoryFromFile name="Load Trajectory From File"
-                                  file="{scan_trajectory_file}"
-                                  trajectory="{scan_trajectory}"/>
+          <PlanToolPathService name="Plan Scan Tool Path"
+                               service_name="plan_tool_path"
+                               config_file="{scan_tpp_config_file}"
+                               mesh_file="{scan_mesh_file}"
+                               mesh_frame="{reference_frame}"
+                               tool_paths="{scan_tool_paths}"/>
+          <ToolPathsPub topic_name="tool_paths"
+                        tool_paths="{scan_tool_paths}"/>
+          <GenerateMotionPlanService service_name="generate_motion_plan"
+                                     motion_group="{scan_motion_group}"
+                                     tcp_frame="{camera_frame}"
+                                     tool_paths="{scan_tool_paths}"
+                                     approach="{scan_approach}"
+                                     process="{scan_process}"
+                                     departure="{scan_departure}"/>
+          <CombineTrajectories first="{scan_approach}"
+                               second="{scan_process}"
+                               output="{scan_trajectory}"/>
+          <CombineTrajectories first="{scan_trajectory}"
+                               second="{scan_departure}"
+                               output="{scan_trajectory}"/>
           <MotionPlanPub name="Publish Scan Motion Plan"
                          topic_name="motion_plan"
                          trajectory="{scan_trajectory}"/>
@@ -132,11 +150,6 @@
                             disapprove_button="back"
                             _description="Press next to approve the scan motion plan and proceed to scan motion execution"/>
           </SetPage>
-          <ExtractApproachProcessDepartureTrajectories name="Extract Trajectories"
-                                                       trajectory="{scan_trajectory}"
-                                                       approach="{scan_approach}"
-                                                       process="{scan_process}"
-                                                       departure="{scan_departure}"/>
           <SubTree ID="scan"
                    approach="{scan_approach}"
                    process="{scan_process}"
@@ -318,17 +331,6 @@
             editable="true">
       <input_port name="service_name"/>
     </Action>
-    <Action ID="ExtractApproachProcessDepartureTrajectories"
-            editable="true">
-      <input_port name="trajectory"
-                  default="{trajectory}"/>
-      <output_port name="approach"
-                   default="{approach}"/>
-      <output_port name="process"
-                   default="{process}"/>
-      <output_port name="departure"
-                   default="{departure}"/>
-    </Action>
     <Action ID="FollowJointTrajectoryAction"
             editable="true">
       <input_port name="action_name"
@@ -374,13 +376,6 @@
                   default="/joint_states"/>
       <output_port name="current_state"
                    default="{current_state}"/>
-    </Action>
-    <Action ID="LoadTrajectoryFromFile"
-            editable="true">
-      <input_port name="file"
-                  default="{trajectory_file}"/>
-      <output_port name="trajectory"
-                   default="{trajectory}"/>
     </Action>
     <Action ID="MotionPlanPub"
             editable="true">
