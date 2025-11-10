@@ -5,11 +5,15 @@
 - git:
     local-name: boost_plugin_loader
     uri: https://github.com/tesseract-robotics/boost_plugin_loader.git
-    version: 0.2.2
+    version: 0.3.2
 - git:
     local-name: noether
     uri: https://github.com/ros-industrial/noether.git
-    version: 38872b1c05d3c84c2fbad85e4c6a7f7edb600852
+    version: 047bf154b1e3c300d7c3b3e12a3162139515aa19
+- git:
+    local-name: noether_ros2
+    uri: https://github.com/ros-industrial/noether_ros2.git
+    version: 0.1.1
 - git:
     local-name: industrial_reconstruction
     uri: https://github.com/ros-industrial/industrial_reconstruction.git
@@ -21,11 +25,11 @@
 - git:
     local-name: BehaviorTree.CPP
     uri: https://github.com/BehaviorTree/BehaviorTree.CPP.git
-    version: 4.4.3
+    version: 4.7.2
 - git:
     local-name: BehaviorTree.ROS2
-    uri: https://github.com/marip8/BehaviorTree.ROS2.git
-    version: fd9e565591b019fc55d579577737d7879a88a4a0
+    uri: https://github.com/BehaviorTree/BehaviorTree.ROS2.git
+    version: 7a6ace6424adaa81737b95d20d81e1e8c0782ed7
 - git:
     local-name: trajectory_preview
     uri: https://github.com/marip8/trajectory_preview.git
@@ -49,4 +53,4 @@
 - git:
     local-name: motoros2_behavior_tree
     uri: https://github.com/marip8/motoros2_behavior_tree.git
-    version: 0.1.0
+    version: 0.2.0
