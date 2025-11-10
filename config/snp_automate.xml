@@ -113,6 +113,9 @@
       <FollowJointTrajectoryAction name="Execute Departure Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{departure}"/>
+      <Sleep msec="1000"/>
+      <TriggerService name="Disable Robot"
+                      service_name="stop_traj_mode"/>
     </Sequence>
   </BehaviorTree>
 
@@ -261,6 +264,9 @@
       <FollowJointTrajectoryAction name="Execute Scan Departure Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{departure}"/>
+      <Sleep msec="1000"/>
+      <TriggerService name="Disable Robot"
+                      service_name="stop_traj_mode"/>
     </Sequence>
   </BehaviorTree>
 
