@@ -5,8 +5,6 @@
 
   <xacro:include filename="$(find snp_automate_2023)/urdf/ros2_control.xacro"/>
   <xacro:snp_ros2_control name="snp_ros2_control" prefix=""/>
-  
-  <xacro:property name="dt_flange_width" value="0.040"/>
 
   <!-- Add World -->
   <material name="light_gray">
@@ -72,14 +70,6 @@
     <parent link="table"/>
     <child link="base_link"/>
     <origin xyz="-0.61 0 0.723" rpy="0 0 0"/>
-  </joint>
-
-  <!-- Create a frame representing the robot tool flange (behind the teach tool and nominal tool0 frame) for IKFast -->
-  <link name="tool_flange"/>
-  <joint name="tool0_to_tool_flange" type="fixed">
-    <parent link="tool0"/>
-    <child link="tool_flange"/>
-    <origin xyz="0.0 0.0 ${-dt_flange_width}" rpy="0 0 0"/>
   </joint>
 
   <!-- Add End Effector Components -->
@@ -175,20 +165,12 @@
     <xacro:property name="camera_cal" value="${load_yaml('$(find snp_automate_2023)/config/calibration.yaml')}" />
   </xacro:unless>
 
-  <link name="camera_color_optical_frame"/>
+  <link name="camera_frame"/>
   <joint name="tool0_to_camera" type="fixed">
-    <parent link="tool0"/>
-    <child link="camera_color_optical_frame"/>
+    <parent link="flange"/>
+    <child link="camera_frame"/>
     <origin xyz="${camera_cal['camera_mount_to_camera_pos']['x']} ${camera_cal['camera_mount_to_camera_pos']['y']} ${camera_cal['camera_mount_to_camera_pos']['z']}"
             rpy="${camera_cal['camera_mount_to_camera_rpy']['x']} ${camera_cal['camera_mount_to_camera_rpy']['y']} ${camera_cal['camera_mount_to_camera_rpy']['z']}" />
-  </joint>
-
-  <link name="cal_target_frame"/>
-  <joint name="target_mount_to_target" type="fixed">
-    <parent link="base_link"/>
-    <child link="cal_target_frame"/>
-    <origin xyz="${camera_cal['target_mount_to_target_pos']['x']} ${camera_cal['target_mount_to_target_pos']['y']} ${camera_cal['target_mount_to_target_pos']['z']}"
-            rpy="${camera_cal['target_mount_to_target_rpy']['x']} ${camera_cal['target_mount_to_target_rpy']['y']} ${camera_cal['target_mount_to_target_rpy']['z']}" />
   </joint>
 
   <!-- Add TCP -->
@@ -206,9 +188,9 @@
   </link>
 
   <joint name="sand_tcp_joint" type="fixed">
-    <parent link="tool_flange"/>
+    <parent link="tool0"/>
 <!--    <origin xyz="-0.158 -0.158 0.123" rpy="0.0 ${radians(90)} ${radians(-135)}"/>-->
-    <origin xyz="-0.149 ${-0.149 - 0.005} 0.123" rpy="0.0 ${radians(-90)} ${radians(-135)}"/>
+    <origin xyz="-0.149 ${-0.149 - 0.005} 0.083" rpy="0.0 ${radians(-90)} ${radians(-135)}"/>
 <!--    <parent link="ee"/>-->
 <!--    <origin xyz="${-0.186 - 0.038} 0.0 ${0.08325}" rpy="0.0 ${radians(90)} 0.0"/>-->
     <child link="sand_tcp"/>

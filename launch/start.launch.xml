@@ -15,12 +15,22 @@
   <!-- Set the default name of the follow joint trajectory action depending on whether the robot is simulated (i.e., ros2_control) or real hardware is being used -->
   <arg name="follow_joint_trajectory_action" default="joint_trajectory_position_controller/follow_joint_trajectory" if="$(var sim_robot)"/>
   <arg name="follow_joint_trajectory_action" default="joint_trajectory_controller/follow_joint_trajectory" unless="$(var sim_robot)"/>
+
   <!-- URDF, Rviz -->
   <include file="$(find-pkg-share snp_automate_2023)/launch/test.launch.xml">
     <arg name="robot_description" value="$(var robot_description)"/>
     <arg name="robot_description_semantic" value="$(var robot_description_semantic)"/>
     <arg name="rviz" value="False"/>
     <arg name="use_gui" value="$(var bypass_execution)"/>
+  </include>
+
+  <!-- Calibration Publisher -->
+  <include file="$(find-pkg-share snp_automate_2023)/launch/calibration_publisher.launch.py">
+    <arg name="camera_calibration_file" value="$(find-pkg-share snp_automate_2023)/config/calibration.yaml"/>
+    <arg name="camera_frame" value="camera_color_optical_frame"/>
+    <arg name="camera_mount_frame" value="motoros2/r1/flange"/>
+    <arg name="target_frame" value="cal_target_frame"/>
+    <arg name="target_mount_frame" value="base_link"/>
   </include>
 
   <!-- Trajectory Preview -->
@@ -123,6 +133,9 @@
   </include>
 
   <group unless="$(var sim_robot)">
+    <!-- Connect URDF robot base frame with robot-published base frame -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="base_to_robot_base" args="--frame-id base --child-frame-id motoros2/world"/>
+
     <node pkg="motoros2_fjt_pt_queue_proxy" exec="server" name="fjt_proxy">
       <param name="max_retries" value="200"/>
       <param name="busy_wait_time" value ="0.1"/>
@@ -130,7 +143,12 @@
     </node>
   </group>
   <group if="$(var sim_robot)">
+    <!-- Connect flange frame to robot-published flange frame -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="flange_to_robot_flange" args="--frame-id flange --child-frame-id motoros2/r1/flange"/>
+
+    <!-- Simulate MotoROS2 services -->
     <node pkg="motoros2_behavior_tree" exec="motoros2_simulator.py"/>
+
     <group if="$(var bypass_execution)">
       <node pkg="snp_motion_execution" exec="execution_simulator" >
         <param name="follow_joint_trajectory_action" value="$(var follow_joint_trajectory_action)"/>

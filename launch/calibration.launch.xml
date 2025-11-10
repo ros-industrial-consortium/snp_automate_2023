@@ -6,6 +6,9 @@
     <arg name="rviz" value="false"/>
   </include>
 
+  <!-- Connect URDF robot base frame with robot-published base frame -->
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="base_to_robot_base" args="--frame-id base --child-frame-id motoros2/world "/>
+
   <!-- Realsense -->
   <include file="$(find-pkg-share realsense2_camera)/launch/rs_launch.py">
     <arg name="publish_tf" value="false"/>
