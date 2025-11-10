@@ -29,7 +29,7 @@ RUN --mount=type=bind,target=${WORKSPACE_DIR}/src/snp_automate_2023 \
 RUN --mount=type=bind,target=${WORKSPACE_DIR}/src/snp_automate_2023 \
   source /opt/tesseract_ros2/install/setup.bash \
   && cd ${WORKSPACE_DIR} \ 
-  && colcon build --cmake-args \
+  && colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release \
   && rm -rf build log
 
 COPY --chmod=755 docker/launch_snp_automate_2023.sh /opt/launch_snp_automate_2023.sh
