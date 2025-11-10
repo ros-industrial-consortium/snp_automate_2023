@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4">
-  <BehaviorTree ID="freespace_motion">
-    <Sequence>
-      <StartPointQueueMode name="Enable Robot"
-                           service_name="start_point_queue_mode"/>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
-      <UpdateTrajectoryStartState name="Update Trajectory Start State"
-                                  joint_state="{current_state}"
-                                  input_trajectory="{trajectory}"
-                                  output="{updated_trajectory}"/>
-      <FollowJointTrajectoryAction name="Execute Approach Motion"
-                                   action_name="{follow_joint_trajectory_action}"
-                                   trajectory="{updated_trajectory}"/>
-    </Sequence>
-  </BehaviorTree>
-
   <BehaviorTree ID="go_home_main">
     <ForceSuccess>
       <ReactiveSequence>
@@ -395,6 +379,10 @@
                   default="tool_paths"/>
       <input_port name="tool_paths"
                   default="{tool_paths}"/>
+    </Action>
+    <Action ID="TriggerService"
+            editable="true">
+      <input_port name="service_name"/>
     </Action>
     <Action ID="UpdateTrajectoryStartState"
             editable="true">
