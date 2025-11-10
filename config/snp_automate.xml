@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4">
-  <BehaviorTree ID="freespace_motion">
-    <Sequence>
-      <StartPointQueueMode name="Enable Robot"
-                           service_name="start_point_queue_mode"/>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
-      <UpdateTrajectoryStartState name="Update Trajectory Start State"
-                                  joint_state="{current_state}"
-                                  input_trajectory="{trajectory}"
-                                  output="{updated_trajectory}"/>
-      <FollowJointTrajectoryAction name="Execute Approach Motion"
-                                   action_name="{follow_joint_trajectory_action}"
-                                   trajectory="{updated_trajectory}"/>
-    </Sequence>
-  </BehaviorTree>
-
   <BehaviorTree ID="go_home_main">
     <ForceSuccess>
       <ReactiveSequence>
@@ -34,8 +18,11 @@
       <Progress start="0"
                 end="50">
         <Sequence>
-          <GetCurrentJointState topic_name="/joint_states"
-                                current_state="{current_state}"/>
+          <RetryUntilSuccessful num_attempts="3">
+            <GetCurrentJointState name="Get Current Joint State"
+                                  topic_name="/joint_states"
+                                  current_state="{current_state}"/>
+          </RetryUntilSuccessful>
           <GenerateFreespaceMotionPlanService service_name="generate_freespace_motion_plan"
                                               start_joint_state="{current_state}"
                                               goal_joint_state="{home_state}"
@@ -90,14 +77,17 @@
 
   <BehaviorTree ID="motion">
     <Sequence>
-      <StartPointQueueMode name="Enable Robot"
-                           service_name="start_point_queue_mode"/>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{approach}"
                                   output="{updated_approach}"/>
+      <StartPointQueueMode name="Enable Robot"
+                           service_name="start_point_queue_mode"/>
       <FollowJointTrajectoryAction name="Execute Approach Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{updated_approach}"/>
@@ -107,6 +97,9 @@
       <FollowJointTrajectoryAction name="Execute Departure Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{departure}"/>
+      <Sleep msec="1000"/>
+      <TriggerService name="Disable Robot"
+                      service_name="stop_traj_mode"/>
     </Sequence>
   </BehaviorTree>
 
@@ -229,8 +222,11 @@
 
   <BehaviorTree ID="scan">
     <Sequence>
-      <GetCurrentJointState topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{approach}"
@@ -252,6 +248,9 @@
       <FollowJointTrajectoryAction name="Execute Scan Departure Motion"
                                    action_name="{follow_joint_trajectory_action}"
                                    trajectory="{departure}"/>
+      <Sleep msec="1000"/>
+      <TriggerService name="Disable Robot"
+                      service_name="stop_traj_mode"/>
     </Sequence>
   </BehaviorTree>
 
@@ -380,6 +379,10 @@
                   default="tool_paths"/>
       <input_port name="tool_paths"
                   default="{tool_paths}"/>
+    </Action>
+    <Action ID="TriggerService"
+            editable="true">
+      <input_port name="service_name"/>
     </Action>
     <Action ID="UpdateTrajectoryStartState"
             editable="true">

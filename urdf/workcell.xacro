@@ -4,7 +4,7 @@
   <xacro:motoman_hc10dt prefix=""/>
 
   <xacro:include filename="$(find snp_automate_2023)/urdf/ros2_control.xacro"/>
-  <xacro:snp_ros2_control name="SNP ROS2 Control" prefix=""/>
+  <xacro:snp_ros2_control name="snp_ros2_control" prefix=""/>
   
   <xacro:property name="dt_flange_width" value="0.040"/>
 
