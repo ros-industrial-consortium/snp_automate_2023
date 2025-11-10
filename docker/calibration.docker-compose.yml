@@ -4,7 +4,7 @@ services:
       ROS_LOG_DIR: /tmp/.ros
       ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
       ROS_DOMAIN_ID: $ROS_DOMAIN_ID
-    container_name: snp-automate_2023
+    container_name: snp_automate_2023_calibration
     image: ghcr.io/ros-industrial-consortium/snp_automate_2023:humble-master
     stdin_open: true
     tty: true
