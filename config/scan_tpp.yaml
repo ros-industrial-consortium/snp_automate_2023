@@ -1,0 +1,26 @@
+mesh_modifiers:
+  - name: NormalsFromMeshFaces
+tool_path_planner:
+  name: PlaneSlicer
+  direction_generator:
+    name: PrincipalAxis
+    rotation_offset: 1.571
+  origin_generator:
+    name: Centroid
+  line_spacing: 0.15239999999999998
+  point_spacing: 0.07619999999999999
+  min_hole_size: 1
+  search_radius: 0.075999999999999998
+  min_segment_size: 0.10000000000000001
+  bidirectional: true
+tool_path_modifiers:
+  - name: SnakeOrganization
+  - name: Offset
+    offset:
+      x: 0
+      y: 0
+      z: 0
+      qw: 0
+      qx: 1
+      qy: 0
+      qz: 0

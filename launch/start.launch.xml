@@ -3,7 +3,8 @@
   <arg name="sim_vision" default="True"/>
   <arg name="sim_robot" default="True"/>
   <arg name="bypass_execution" default="$(var sim_robot)" />
-  <arg name="mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/part_scan.ply"/>
+  <arg name="process_mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/part_scan.ply"/>
+  <arg name="scan_mesh_file" default="$(find-pkg-share snp_automate_2023)/meshes/scan_mesh.ply"/>
   <arg name="scan_trajectory_file" default="$(find-pkg-share snp_automate_2023)/config/scan_traj.yaml"/>
   <arg name="verbose" default="True"/>
   <arg name="scan_disabled_contact_links" default="[table, base_link, floor]"/>
@@ -54,10 +55,10 @@
     <param name="tcp_frame" value="sand_tcp"/>
     <param name="camera_frame" value="camera_color_optical_frame"/>
     <!-- Scan -->
-    <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
     <param name="scan_motion_group" value="manipulator"/>
-    <param name="scan_tpp_config_file" value=""/>
-    <param name="scan_mesh_file" value=""/>
+    <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
+    <param name="scan_tpp_config_file" value="$(find-pkg-share snp_automate_2023)/config/scan_tpp.yaml"/>
+    <param name="scan_mesh_file" value="$(var scan_mesh_file)"/>
     <!-- Process -->
     <param name="process_motion_group" value="manipulator"/>
     <param name="process_tpp_config_file" value="$(find-pkg-share snp_automate_2023)/config/tpp.yaml"/>
@@ -101,7 +102,7 @@
     <!-- Launch Open3d Interface Node (Sim) -->
   <group if="$(var sim_vision)">
     <node pkg="snp_scanning" exec="reconstruction_sim_node">
-      <param name="mesh_file" value="$(var mesh_file)"/>
+      <param name="mesh_file" value="$(var process_mesh_file)"/>
       <param name="reference_frame" value="$(var reference_frame)"/>
       <remap from="mesh" to="industrial_reconstruction_mesh"/>
     </node>
