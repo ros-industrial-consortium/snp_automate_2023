@@ -4,7 +4,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        - TAG=humble-7.0
+        - TAG=@sha256:75c3f24fc1a561bd6a709d3efa2876ada80dc5ccd3c58597e526f00979a3e272
     environment:
       DISPLAY: $DISPLAY
       XAUTHORITY: $XAUTHORITY

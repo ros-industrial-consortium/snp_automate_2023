@@ -1,5 +1,5 @@
 ARG TAG=humble
-FROM ghcr.io/ros-industrial-consortium/scan_n_plan_workshop:${TAG}
+FROM ghcr.io/ros-industrial-consortium/scan_n_plan_workshop${TAG}
 
 SHELL ["/bin/bash", "-c"]
 

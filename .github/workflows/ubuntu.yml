@@ -21,7 +21,7 @@ jobs:
       matrix:
         distro: [humble]
     container:
-      image: ghcr.io/ros-industrial-consortium/scan_n_plan_workshop:${{ matrix.distro }}-7.0
+      image: ghcr.io/ros-industrial-consortium/scan_n_plan_workshop:@sha256:75c3f24fc1a561bd6a709d3efa2876ada80dc5ccd3c58597e526f00979a3e272
       env:
         CCACHE_DIR: ${{ github.workspace }}/${{ matrix.distro }}/.ccache
         DEBIAN_FRONTEND: noninteractive
