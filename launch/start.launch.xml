@@ -53,6 +53,7 @@
     <param name="reference_frame" value="$(var reference_frame)"/>
     <param name="tcp_frame" value="sand_tcp"/>
     <param name="camera_frame" value="camera_color_optical_frame"/>
+    <param name="camera_tcp_frame" value="camera_color_optical_frame"/>
     <!-- Scan -->
     <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
     <param name="scan_motion_group" value="manipulator"/>
@@ -65,15 +66,17 @@
     <!-- Industrial Reconstruction parameters -->
     <param name="ir_voxel_length" value="0.003"/>
     <param name="ir_sdf_trunc" value="0.015"/>
+    <param name="ir_depth_scale" value="1000.0"/>
+    <param name="ir_depth_trunc" value="0.9"/>
+    <param name="ir_translation_filter_distance" value="0.1"/>
+    <param name="ir_rotation_filter_distance" value="$(eval 'radians(5.0)')"/>
     <param name="ir_min_x" value="0.21"/>
     <param name="ir_min_y" value="-0.45"/>
     <param name="ir_min_z" value="0.0889"/>
     <param name="ir_max_x" value="1.5"/>
     <param name="ir_max_y" value="0.45"/>
     <param name="ir_max_z" value="0.527"/>
-    <param name="ir_depth_scale" value="1000.0"/>
-    <param name="ir_depth_trunc" value="0.9"/>
-    <param name="ir_live" value="true"/>
+    <param name="ir_live" value="false"/>
     <param name="ir_min_faces" value="3000"/>
     <param name="ir_normal_angle_tol" value="85.0"/>
     <param name="ir_normal_x" value="0.0"/>
