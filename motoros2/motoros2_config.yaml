@@ -135,7 +135,7 @@ stop_motion_on_disconnect: true
 # the data will interfere with applications such as robot_state_publisher.
 #
 # DEFAULT: true
-publish_tf: false
+publish_tf: true
 
 #-----------------------------------------------------------------------------
 # Should the 'tf' topic be namespaced if 'node_namespace' is configured with a
@@ -146,7 +146,7 @@ publish_tf: false
 # Otherwise, it will broadcast on 'tf', which can be namespaced.
 #
 # DEFAULT: true
-namespace_tf: true
+namespace_tf: false
 
 #-----------------------------------------------------------------------------
 # Similar to the 'frame_prefix' parameter of the ROS 2 'robot_state_publisher'
@@ -160,7 +160,7 @@ namespace_tf: true
 #       automatically.
 #
 # DEFAULT: ""  (empty string)
-#tf_frame_prefix: ""
+tf_frame_prefix: motoros2/
 
 #-----------------------------------------------------------------------------
 # Joints in this configuration file must be listed in the order of Robots,

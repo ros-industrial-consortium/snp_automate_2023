@@ -4,7 +4,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        - TAG=@sha256:75c3f24fc1a561bd6a709d3efa2876ada80dc5ccd3c58597e526f00979a3e272
+        - TAG=@sha256:5a44f06f8c930212b1d2402fd9ae64b8e6dba403dd988d5e93e8c914e71bf076
     environment:
       DISPLAY: $DISPLAY
       XAUTHORITY: $XAUTHORITY
