@@ -62,8 +62,8 @@
     <!-- Frames -->
     <param name="reference_frame" value="$(var reference_frame)"/>
     <param name="tcp_frame" value="sand_tcp"/>
-    <param name="camera_frame" value="camera_color_optical_frame"/>
-    <param name="camera_tcp_frame" value="camera_color_optical_frame"/>
+    <param name="camera_frame" value="camera_color_optical_frame"/>  <!-- Calibrated camera frame, relative to the controller-reported flange frame -->
+    <param name="camera_tcp_frame" value="camera_frame"/>  <!-- URDF camera frame used for planning -->
     <!-- Scan -->
     <param name="scan_trajectory_file" value="$(var scan_trajectory_file)"/>
     <param name="scan_motion_group" value="manipulator"/>
