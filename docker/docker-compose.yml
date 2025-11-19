@@ -27,7 +27,8 @@ services:
       - /etc/group:/etc/group:ro
       - /etc/shadow:/etc/shadow:ro
       - /dev:/dev
-      - $HOME/snp/meshes:/$HOME/snp/meshes
+      - $HOME/snp/meshes:$HOME/snp/meshes
+      - $HOME/.config:$HOME/.config
   # Driver
   micro-ros-agent:
     environment:
