@@ -56,7 +56,7 @@ jobs:
           context: .
           file: docker/Dockerfile
           build-args: |
-            TAG=@sha256:6437400aadce8cb49acaedea314d809e06796cf2d80bba1fdd902e4ca95eba86
+            TAG=@sha256:8ef984ba26955f2923ca78c25683aa92b5c01ce16a43a25435b6668503fedecf
           push: ${{ env.PUSH_DOCKER_IMAGE }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
