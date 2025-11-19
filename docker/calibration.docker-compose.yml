@@ -44,7 +44,7 @@ services:
       ROS_LOG_DIR: /tmp/.ros
       ROS_LOCALHOST_ONLY: $ROS_LOCALHOST_ONLY
       ROS_DOMAIN_ID: $ROS_DOMAIN_ID
-      IC_CAMERA_MOUNT_FRAME: tool0
+      IC_CAMERA_MOUNT_FRAME: motoros2/r1/flange
       IC_CAMERA_FRAME: camera_color_optical_frame
       IC_TARGET_MOUNT_FRAME: base_link
       IC_TARGET_FRAME: cal_target_frame
