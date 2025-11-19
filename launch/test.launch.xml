@@ -19,13 +19,13 @@
   </group>
 
   <node pkg="robot_state_publisher" exec="robot_state_publisher" output="screen">
-    <param name="robot_description" value="$(var robot_description)"/>
+    <param name="robot_description" value="$(var robot_description)" type="str"/>
   </node>
 
   <group if="$(var rviz)">
     <node pkg="rviz2" exec="rviz2" args="-d $(var rviz_config)">
-      <param name="robot_description" value="$(var robot_description)"/>
-      <param name="robot_description_semantic" value="$(var robot_description_semantic)"/>
+      <param name="robot_description" value="$(var robot_description)" type="str"/>
+      <param name="robot_description_semantic" value="$(var robot_description_semantic)" type="str"/>
     </node>
   </group>
 </launch>

@@ -1,7 +1,7 @@
 - git:
-    local-name: motoman
-    uri: 'https://github.com/ben-greenberg/motoman.git'
-    version: 565d0babe0ac751d3b933c417fcbd7f5a9b853c2
+    local-name: motoman_ros2_support_packages
+    uri: https://github.com/Yaskawa-Global/motoman_ros2_support_packages.git
+    version: 3187e27b9e59615b7bb4d25ca406e4280e8ebe26
 - git:
     local-name: motoros2_interfaces
     uri: https://github.com/yaskawa-global/motoros2_interfaces.git

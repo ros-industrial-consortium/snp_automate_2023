@@ -31,8 +31,8 @@
 
   <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share snp_automate_2023)/config/app.rviz" output="screen">
     <!-- Rviz Displays -->
-    <param name="robot_description" value="$(var robot_description)"/>
-    <param name="robot_description_semantic" value="$(var robot_description_semantic)"/>
+    <param name="robot_description" value="$(var robot_description)" type="str"/>
+    <param name="robot_description_semantic" value="$(var robot_description_semantic)" type="str"/>
     <!-- Application -->
     <!-- BT -->
     <param name="bt_files" value="[$(find-pkg-share snp_automate_2023)/config/snp_automate.xml]"/>
