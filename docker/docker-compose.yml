@@ -6,6 +6,7 @@ services:
       args:
         - TAG=@sha256:77d60e22e7d68694311403e5082cc01a6b4da7c9bee31a5c202b73710bc58fc8
     environment:
+      HOME: $HOME
       DISPLAY: $DISPLAY
       XAUTHORITY: $XAUTHORITY
       ROS_LOG_DIR: /tmp/.ros
@@ -15,20 +16,24 @@ services:
     image: ghcr.io/ros-industrial-consortium/snp_automate_2023:humble-master
     stdin_open: true
     tty: true
-    network_mode: host
     privileged: true
+    network_mode: host
     user: ${CURRENT_UID}  # CURRENT_UID=$(id -u):$(id -g)
     group_add:
       - sudo
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/localtime:/etc/localtime:ro
       - /etc/hosts:/etc/hosts
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
       - /etc/shadow:/etc/shadow:ro
       - /dev:/dev
+      - $HOME/.bashrc:$HOME/.bashrc
       - $HOME/snp/meshes:$HOME/snp/meshes
+      # Mount .config directory for access to QSettings files
       - $HOME/.config:$HOME/.config
+
   # Driver
   micro-ros-agent:
     environment:
