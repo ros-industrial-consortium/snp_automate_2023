@@ -63,6 +63,10 @@
             <input_port name="file" default="{trajectory_file}"/>
             <output_port name="trajectory" default="{trajectory}"/>
         </Action>
+        <Action ID="MarkerPub" editable="true">
+            <input_port name="topic_name"/>
+            <input_port name="marker"/>
+        </Action>
         <Action ID="MotionPlanPub" editable="true">
             <input_port name="topic_name"/>
             <input_port name="trajectory"/>

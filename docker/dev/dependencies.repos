@@ -5,39 +5,39 @@
 - git:
     local-name: boost_plugin_loader
     uri: https://github.com/tesseract-robotics/boost_plugin_loader.git
-    version: 0.3.2
+    version: 0.4.3
 - git:
     local-name: noether
     uri: https://github.com/ros-industrial/noether.git
-    version: 047bf154b1e3c300d7c3b3e12a3162139515aa19
+    version: 0.16.0
 - git:
     local-name: noether_ros2
     uri: https://github.com/ros-industrial/noether_ros2.git
-    version: 0.1.1
+    version: 0.2.0
 - git:
     local-name: industrial_reconstruction
     uri: https://github.com/ros-industrial/industrial_reconstruction.git
-    version: dbe6b476ca7c20a23cac118506b40868209fbd9a
+    version: 90fdc690be9230480614b5cf96cc39c873de292c
 - git:
     local-name: rviz_polygon_selection_tool
     uri: https://github.com/swri-robotics/rviz_polygon_selection_tool.git
-    version: 1.0.0
+    version: 1.2.0
 - git:
     local-name: BehaviorTree.CPP
     uri: https://github.com/BehaviorTree/BehaviorTree.CPP.git
     version: 4.7.2
 - git:
     local-name: BehaviorTree.ROS2
-    uri: https://github.com/BehaviorTree/BehaviorTree.ROS2.git
-    version: 7a6ace6424adaa81737b95d20d81e1e8c0782ed7
+    uri: https://github.com/marip8/BehaviorTree.ROS2.git
+    version: 0272895ff84381c66b0e95090312126fa982f4a7
 - git:
     local-name: trajectory_preview
     uri: https://github.com/marip8/trajectory_preview.git
-    version: 2.0.0
+    version: 2.0.1
 - git:
-    local-name: motoman
-    uri: 'https://github.com/ben-greenberg/motoman.git'
-    version: 565d0babe0ac751d3b933c417fcbd7f5a9b853c2
+    local-name: motoman_ros2_support_packages
+    uri: https://github.com/Yaskawa-Global/motoman_ros2_support_packages.git
+    version: 3187e27b9e59615b7bb4d25ca406e4280e8ebe26
 - git:
     local-name: motoros2_interfaces
     uri: https://github.com/yaskawa-global/motoros2_interfaces.git
@@ -48,8 +48,8 @@
     version: d547cdcfdaf3bc0d46325215b8219b0a190c8e6c
 - git:
     local-name: motoros2_fjt_pt_queue_proxy
-    uri: https://github.com/gavanderhoorn/motoros2_fjt_pt_queue_proxy.git
-    version: 9279969b6eec46b82fd4867ebeabfe534d653b6f
+    uri: https://github.com/marip8/motoros2_fjt_pt_queue_proxy.git
+    version: 56f59a08e675b2616e00dfe39494b335d0e9fc23
 - git:
     local-name: motoros2_behavior_tree
     uri: https://github.com/marip8/motoros2_behavior_tree.git
