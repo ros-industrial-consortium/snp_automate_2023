@@ -1,31 +1,27 @@
 mesh_modifiers:
   - name: ROISelection
-    min_cluster_size: 100
     max_cluster_size: 1000000000
-    cluster_tolerance: 0.1
-    plane_distance_threshold: 0.1
+    min_cluster_size: 100
+    cluster_tolerance: 0.10000000000000001
+    plane_distance_threshold: 0.10000000000000001
   - name: NormalsFromMeshFaces
 tool_path_planner:
-  name: PlaneSlicer
+  name: PlaneSlicerLegacy
   direction_generator:
-    name: FixedDirection
-    direction:
-      x: 1
-      y: 0
-      z: 0
+    name: LocatedVectorDirection
+    service_name: get_located_vector
   origin_generator:
-    name: FixedOrigin
-    origin:
-      x: 0
-      y: 0
-      z: 0
-  line_spacing: 0.03
-  point_spacing: 0.015
-  min_hole_size: 0.1
-  search_radius: 0.03
-  min_segment_size: 0.1
+    name: Centroid
+  line_spacing: 0.029999999999999999
+  point_spacing: 0.029999999999999999
+  min_hole_size: 0.10000000000000001
+  min_segment_size: 0.10000000000000001
   bidirectional: true
 tool_path_modifiers:
   - name: MovingAverageOrientationSmoothing
     window_size: 5
+  - name: UniformSpacing
+    point_spacing: 0.014999999999999999
+    spline_degree: 2
+    include_endpoints: false
   - name: SnakeOrganization
