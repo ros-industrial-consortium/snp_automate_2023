@@ -62,22 +62,26 @@
 
   <BehaviorTree ID="main">
     <ForceSuccess>
-      <ReactiveSequence>
-        <ButtonMonitor name="Reset"
-                       button="reset"
-                       _description="Sequence has been reset to start state"/>
-        <KeepRunningUntilFailure>
-          <ForceSuccess>
-            <ReactiveSequence>
-              <ButtonMonitor name="Halt"
-                             button="halt"
-                             _description="Current task has been halted"/>
-              <SubTree ID="process"
-                       _autoremap="true"/>
-            </ReactiveSequence>
-          </ForceSuccess>
-        </KeepRunningUntilFailure>
-      </ReactiveSequence>
+      <Sequence>
+        <Script name="Initialize Flags"
+                code="skip_motion_plan := false; skip_scan := false; skip_generate_scan_motion := false"/>
+        <ReactiveSequence>
+          <ButtonMonitor name="Reset"
+                         button="reset"
+                         _description="Sequence has been reset to start state"/>
+          <KeepRunningUntilFailure>
+            <ForceSuccess>
+              <ReactiveSequence>
+                <ButtonMonitor name="Halt"
+                               button="halt"
+                               _description="Current task has been halted"/>
+                <SubTree ID="process"
+                         _autoremap="true"/>
+              </ReactiveSequence>
+            </ForceSuccess>
+          </KeepRunningUntilFailure>
+        </ReactiveSequence>
+      </Sequence>
     </ForceSuccess>
   </BehaviorTree>
 
@@ -108,7 +112,7 @@
     <SNPSequenceWithMemory>
       <Progress start="0"
                 end="20">
-        <Sequence>
+        <Sequence _skipIf="skip_generate_scan_motion">
           <SetPage index="0">
             <ButtonApproval name="Approve Scan Motion Plan Creation"
                             approve_button="scan"
@@ -126,11 +130,14 @@
       <Progress start="20"
                 end="40">
         <Sequence _skipIf="skip_scan">
+          <MarkerPub topic_name="/industrial_reconstruction_mesh"
+                     marker="{reference_frame}"/>
           <SetPage index="3">
             <ButtonApproval name="Approve Scan Execution"
                             approve_button="execute"
                             disapprove_button="back"
-                            _description="Press next to approve the scan motion plan and proceed to scan motion execution"/>
+                            _description="Press next to approve the scan motion plan and proceed to scan motion execution"
+                            _onFailure="skip_generate_scan_motion=false"/>
           </SetPage>
           <ExtractApproachProcessDepartureTrajectories name="Extract Trajectories"
                                                        trajectory="{scan_trajectory}"
@@ -141,12 +148,15 @@
                    approach="{scan_approach}"
                    process="{scan_process}"
                    departure="{scan_departure}"
+                   _onFailure="skip_generate_scan_motion=true"
                    _autoremap="true"/>
         </Sequence>
       </Progress>
       <Progress start="40"
                 end="60">
         <Sequence>
+          <ToolPathsPub topic_name="tool_paths"
+                        tool_paths="{reference_frame}"/>
           <SetPage index="1">
             <ButtonApproval name="Approve Tool Path Plan"
                             approve_button="tpp"
@@ -159,7 +169,8 @@
                                config_file="{process_tpp_config_file}"
                                mesh_file="{process_mesh_file}"
                                mesh_frame="{reference_frame}"
-                               tool_paths="{tool_paths}"/>
+                               tool_paths="{tool_paths}"
+                               _onFailure="skip_scan=true"/>
           <ToolPathsPub name="Publish Tool Paths"
                         topic_name="tool_paths"
                         tool_paths="{tool_paths}"/>
@@ -167,7 +178,7 @@
       </Progress>
       <Progress start="60"
                 end="80">
-        <ReactiveSequence>
+        <ReactiveSequence _skipIf="skip_motion_plan">
           <ButtonMonitor name="Tool Path Configuration Changed"
                          button="tpp_config"/>
           <Sequence>
@@ -205,10 +216,12 @@
             <ButtonApproval name="Approve Process Motion Execution"
                             approve_button="execute"
                             disapprove_button="back"
-                            _description="Press next to approve the process motion plan and proceed to process motion execution"/>
+                            _description="Press next to approve the process motion plan and proceed to process motion execution"
+                            _onFailure="skip_motion_plan=false"/>
           </SetPage>
           <SubTree ID="motion"
                    trajectory="{trajectory}"
+                   _onFailure="skip_motion_plan=true"
                    _autoremap="true"/>
         </Sequence>
       </Progress>
@@ -384,6 +397,11 @@
       <output_port name="trajectory"
                    default="{trajectory}"/>
     </Action>
+    <Action ID="MarkerPub"
+            editable="true">
+      <input_port name="topic_name"/>
+      <input_port name="marker"/>
+    </Action>
     <Action ID="MotionPlanPub"
             editable="true">
       <input_port name="topic_name"/>
@@ -409,8 +427,6 @@
       <input_port name="end"
                   default="100"/>
     </Decorator>
-    <Condition ID="RosSpinner"
-               editable="true"/>
     <Control ID="SNPSequenceWithMemory"
              editable="true"/>
     <Decorator ID="SetPage"
