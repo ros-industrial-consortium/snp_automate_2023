@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: [humble]
+        distro: [humble, jazzy]
     container:
       image: ghcr.io/ros-industrial-consortium/scan_n_plan_workshop@sha256:77d60e22e7d68694311403e5082cc01a6b4da7c9bee31a5c202b73710bc58fc8
       env:
