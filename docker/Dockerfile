@@ -11,7 +11,7 @@ USER root
 RUN apt update -y -qq && apt install -y -qq sudo python3-pip
 
 # Install pyquaternion
-RUN python3 -m pip install pyquaternion
+RUN PIP_BREAK_SYSTEM_PACKAGES=1 python3 -m pip install pyquaternion
 
 # Bind mount the source directory so as not to unnecessarily copy source code into the docker image
 ARG WORKSPACE_DIR=/opt/snp_automate_2023
