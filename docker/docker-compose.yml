@@ -4,7 +4,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        - TAG=@sha256:77d60e22e7d68694311403e5082cc01a6b4da7c9bee31a5c202b73710bc58fc8
+        - TAG=humble-8.0
     environment:
       HOME: $HOME
       DISPLAY: $DISPLAY
